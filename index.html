@@ -1,241 +1,227 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUDA MENDUNIA INDONESIA | Empowering Youth Across Nation</title>
+    <title>MUDA MENDUNIA INDONESIA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .hero-bg {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            position: relative;
-        }
-        .nav-blur {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .btn-primary {
-            background: #2563eb;
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            background: #1e40af;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-        }
-        .card-program {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .card-program:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-        }
-        .text-gradient {
-            background: linear-gradient(to right, #1e40af, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfaff; overflow-x: hidden; }
+        .bg-gradient-pink { background: linear-gradient(90deg, #8e2de2, #f00056); }
+        .text-gradient { background: linear-gradient(90deg, #8e2de2, #f00056); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-shadow { box-shadow: 0 10px 40px rgba(142, 45, 226, 0.08); border-radius: 30px; }
+        .hero-bg { background: linear-gradient(rgba(45, 11, 90, 0.9), rgba(45, 11, 90, 0.9)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80'); background-size: cover; background-position: center; }
     </style>
 </head>
-<body class="bg-white text-slate-900">
+<body>
 
-    <!-- NAVIGATION (Style Youth Ranger) -->
-    <nav class="fixed w-full z-[100] nav-blur border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs italic">MMI</div>
-                <span class="font-extrabold text-lg tracking-tighter text-slate-800">MUDA MENDUNIA <span class="text-blue-600">INDONESIA</span></span>
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-[100] px-6 py-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center bg-white/80 backdrop-blur-md rounded-2xl p-4 shadow-sm">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-gradient-pink rounded-xl flex items-center justify-center text-white font-bold">MMI</div>
+                <span class="font-bold text-slate-800 tracking-tighter">MUDA MENDUNIA</span>
             </div>
-            <div class="hidden lg:flex items-center space-x-10 text-sm font-semibold text-slate-600">
-                <a href="#about" class="hover:text-blue-600 transition">Tentang Kami</a>
-                <a href="#impact" class="hover:text-blue-600 transition">Dampak</a>
-                <a href="#programs" class="hover:text-blue-600 transition">Program</a>
-                <a href="#cabang" class="hover:text-blue-600 transition">Cabang</a>
-                <a href="#contact" class="btn-primary text-white px-6 py-2.5 rounded-full shadow-md">Gabung Sekarang</a>
-            </div>
+            <button onclick="toggleMenu()" class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center">
+                <i class="fas fa-bars text-slate-600"></i>
+            </button>
         </div>
     </nav>
 
+    <!-- MENU OVERLAY -->
+    <div id="overlay" class="fixed inset-0 bg-white z-[110] hidden flex-col p-8 overflow-y-auto">
+        <div class="flex justify-between items-center mb-10">
+            <div class="font-black text-gradient text-2xl">MMI</div>
+            <button onclick="toggleMenu()" class="w-12 h-12 bg-gradient-pink rounded-2xl flex items-center justify-center text-white"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="space-y-4 text-slate-700">
+            <a href="#" class="block p-4 bg-slate-50 rounded-2xl font-bold text-purple-700">Beranda</a>
+            <a href="#profil" onclick="toggleMenu()" class="block p-4 bg-white border rounded-2xl font-bold">Profil Organisasi</a>
+            <a href="#sektor" onclick="toggleMenu()" class="block p-4 bg-white border rounded-2xl font-bold">4 Sektor Utama</a>
+            <a href="#cabang" onclick="toggleMenu()" class="block p-4 bg-white border rounded-2xl font-bold">64 Cabang Aktif</a>
+            <button class="w-full bg-gradient-pink p-5 rounded-2xl text-white font-bold mt-4 shadow-lg shadow-pink-200">Gabung Sekarang</button>
+        </div>
+    </div>
+
     <!-- HERO SECTION -->
-    <section class="hero-bg pt-40 pb-24 px-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <div class="inline-flex items-center space-x-2 bg-blue-50 border border-blue-100 px-4 py-2 rounded-full mb-6">
-                    <span class="flex h-2 w-2 rounded-full bg-blue-600 animate-ping"></span>
-                    <span class="text-blue-700 text-xs font-bold uppercase tracking-widest">Akselerator Pemuda Nasional</span>
-                </div>
-                <h1 class="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8 text-slate-900 tracking-tight">
-                    Bangun Potensi, <br><span class="text-gradient">Mendunia Sejak Dini.</span>
-                </h1>
-                <p class="text-lg text-slate-500 mb-10 max-w-lg leading-relaxed">
-                    MUDA MENDUNIA INDONESIA adalah wadah kolaboratif bagi pemuda di 64 daerah untuk bertransformasi menjadi pemimpin yang solutif.
-                </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#programs" class="btn-primary text-white text-center px-8 py-4 rounded-2xl font-bold">Jelajahi Program</a>
-                    <a href="#about" class="bg-white border border-slate-200 text-slate-700 text-center px-8 py-4 rounded-2xl font-bold hover:bg-slate-50 transition">Pelajari Visi</a>
-                </div>
+    <section class="relative min-h-screen flex items-center justify-center px-6 pt-20 hero-bg">
+        <div class="text-center text-white max-w-2xl">
+            <div class="inline-block bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-xs font-bold mb-6 border border-white/20">
+                ✨ ESTABLISHED 17 OKTOBER 2023
             </div>
-            <div class="relative">
-                <div class="absolute -top-20 -right-20 w-80 h-80 bg-blue-400 rounded-full blur-[100px] opacity-20"></div>
-                <div class="bg-white p-6 rounded-[2.5rem] shadow-2xl relative z-10 border border-slate-100">
-                    <!-- Ilustrasi Placeholder (Bisa diganti foto tim) -->
-                    <div class="bg-slate-100 aspect-square rounded-[2rem] flex flex-col items-center justify-center text-slate-400">
-                        <i class="fas fa-users text-6xl mb-4"></i>
-                        <span class="font-medium">500++ Pemuda Hebat Bergabung</span>
-                    </div>
-                </div>
+            <h1 class="text-5xl md:text-6xl font-black mb-6 leading-tight">Muda Mendunia <br><span class="text-gradient font-black" style="-webkit-text-fill-color: #f00056;">Indonesia</span></h1>
+            <p class="text-lg text-slate-200 mb-8 font-medium">"Saatnya Muda Berkarya"</p>
+            <div class="flex flex-col gap-4 max-w-xs mx-auto">
+                <button class="bg-gradient-pink px-8 py-4 rounded-2xl font-bold shadow-xl">Jelajahi Program</button>
+                <p class="text-sm opacity-60 italic">Wadah aksi pendidikan, ekonomi kreatif & kemanusiaan.</p>
             </div>
         </div>
     </section>
 
-    <!-- IMPACT STATS (Counter Style) -->
-    <section id="impact" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 border-y border-slate-100 py-16">
-                <div class="text-center">
-                    <div class="text-4xl font-extrabold text-slate-900 mb-2">500+</div>
-                    <div class="text-slate-500 font-medium text-sm">Anggota Aktif</div>
-                </div>
-                <div class="text-center border-l border-slate-100">
-                    <div class="text-4xl font-extrabold text-slate-900 mb-2">64</div>
-                    <div class="text-slate-500 font-medium text-sm">Cabang Daerah</div>
-                </div>
-                <div class="text-center border-l border-slate-100">
-                    <div class="text-4xl font-extrabold text-slate-900 mb-2">1,370+</div>
-                    <div class="text-slate-500 font-medium text-sm">Siswa Teredukasi</div>
-                </div>
-                <div class="text-center border-l border-slate-100">
-                    <div class="text-4xl font-extrabold text-slate-900 mb-2">24k+</div>
-                    <div class="text-slate-500 font-medium text-sm">Warga Terbantu</div>
-                </div>
+    <!-- PROFIL & SEJARAH -->
+    <section id="profil" class="py-20 px-6">
+        <div class="max-w-xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-slate-800 mb-2">Profil Organisasi</h2>
+                <div class="h-1.5 w-20 bg-gradient-pink rounded-full mx-auto"></div>
             </div>
-        </div>
-    </section>
-
-    <!-- ABOUT SECTION (Definisi & Sejarah) -->
-    <section id="about" class="py-24 bg-slate-50">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-blue-600 font-bold mb-4 uppercase tracking-[0.2em] text-xs font-black">History & Definition</h2>
-            <h3 class="text-3xl lg:text-4xl font-bold mb-10 leading-tight">Membangun Jembatan Solusi <br>dari Desa untuk Dunia.</h3>
-            <div class="text-lg text-slate-500 leading-relaxed space-y-6 text-justify lg:text-center">
-                <p>
-                    Didirikan pada akhir 2023, <strong>MUDA MENDUNIA INDONESIA</strong> lahir sebagai gerakan responsif terhadap ketimpangan kualitas sumber daya pemuda. Kami mengadopsi sistem <em>Decentralized Leadership</em>, di mana setiap anak muda di daerah memiliki hak dan kemampuan yang sama untuk menjadi solusi bagi daerahnya masing-masing.
+            
+            <div class="space-y-6 text-slate-600 leading-relaxed text-center">
+                <p class="bg-purple-50 p-6 rounded-[30px] border border-purple-100">
+                    <strong>MMI</strong> adalah NGO yang mewadahi anak muda seluruh Indonesia untuk aktif, kreatif, dan inovatif dalam aksi pendidikan, ekonomi kreatif, dan kemanusiaan demi <strong>Indonesia Emas 2045</strong>.
                 </p>
                 <p>
-                    Dibawah naungan <strong>Yayasan Rumah Untuk Kita Semua</strong>, kami mengintegrasikan pendidikan, ekonomi lokal, dan kemanusiaan dalam satu nafas gerakan nasional.
+                    Didirikan oleh <strong>Dicki Chandra</strong> di Kabupaten Tasikmalaya sebagai solusi pengembangan pemuda daerah, kini MMI telah bertransformasi menjadi organisasi nasional.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- PROGRAMS (Card Style Youth Ranger) -->
-    <section id="programs" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-16">
-                <h2 class="text-3xl font-bold mb-4 tracking-tight">Program Unggulan Kami</h2>
-                <div class="w-16 h-1.5 bg-blue-600 rounded-full"></div>
+    <!-- VISI & MISI -->
+    <section class="py-20 px-6 bg-[#2d0b5a] text-white rounded-[50px] mx-4 shadow-2xl">
+        <div class="max-w-xl mx-auto">
+            <h2 class="text-3xl font-black mb-8 text-center">Visi Kami</h2>
+            <div class="bg-white/10 p-8 rounded-[40px] border border-white/20 text-center mb-12">
+                <p class="text-xl font-semibold italic">"Terwujud pemuda yang aktif, kreatif dan inovatif dalam menyelesaikan permasalahan yang ada."</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-10">
-                <!-- Program 1 -->
-                <div class="card-program bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
-                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
-                        <i class="fas fa-hands-helping text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-4 text-slate-800">Zillenial Mengabdi</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-6">Program pengabdian masyarakat di desa terpencil dengan fokus transfer pengetahuan dan pemberdayaan berkelanjutan.</p>
-                    <a href="#" class="text-blue-600 font-bold text-sm inline-flex items-center">Selengkapnya <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+            
+            <h2 class="text-3xl font-black mb-8 text-center">Misi Kami</h2>
+            <div class="space-y-4">
+                <div class="flex gap-4 items-start bg-white/5 p-5 rounded-3xl">
+                    <div class="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center shrink-0">1</div>
+                    <p class="text-sm">Mewadahi dan menjembatani generasi muda Indonesia.</p>
                 </div>
-                <!-- Program 2 -->
-                <div class="card-program bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
-                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 mb-6">
-                        <i class="fas fa-chart-line text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-4 text-slate-800">Inkubasi UMKM</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-6">Mendampingi UMKM lokal untuk naik kelas melalui jaringan distribusi nasional MUDA MENDUNIA INDONESIA.</p>
-                    <a href="#" class="text-green-600 font-bold text-sm inline-flex items-center">Selengkapnya <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                <div class="flex gap-4 items-start bg-white/5 p-5 rounded-3xl">
+                    <div class="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center shrink-0">2</div>
+                    <p class="text-sm">Membangun jaringan generasi muda se-nasional.</p>
                 </div>
-                <!-- Program 3 -->
-                <div class="card-program bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
-                    <div class="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
-                        <i class="fas fa-school text-2xl"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-4 text-slate-800">Zillenial Beraksi</h4>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-6">Gerakan "Goes to School" untuk membangun mentalitas pemimpin dan problem solver bagi siswa sekolah menengah.</p>
-                    <a href="#" class="text-orange-600 font-bold text-sm inline-flex items-center">Selengkapnya <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
+                <div class="flex gap-4 items-start bg-white/5 p-5 rounded-3xl">
+                    <div class="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center shrink-0">3</div>
+                    <p class="text-sm">Aktif dalam gerakan pengabdian Aksi Pendidikan, Ekonomi kreatif & Kemanusiaan.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DAFTAR CABANG (Grid Interactive) -->
-    <section id="cabang" class="py-24 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold mb-4 italic">64 Jaringan Cabang Nasional</h2>
-                <p class="text-slate-400 font-medium">MUDA MENDUNIA INDONESIA telah hadir di berbagai wilayah nusantara.</p>
+    <!-- STATISTIK (DENGAN DATA ASLI) -->
+    <section id="cabang" class="py-20 px-6">
+        <div class="max-w-xl mx-auto grid grid-cols-2 gap-4">
+            <div class="bg-white p-8 card-shadow text-center">
+                <h3 class="text-4xl font-black text-purple-700">64</h3>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">Cabang Aktif</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <!-- Contoh daftar cabang (Bisa ditambah sampai 64) -->
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">TASIKMALAYA</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">BANDUNG</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">SURABAYA</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">MEDAN</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">MAKASSAR</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">BALIKPAPAN</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">PALEMBANG</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">YOGYAKARTA</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">PONTIANAK</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">MANADO</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">AMBON</div>
-                <div class="bg-white/5 border border-white/10 py-4 px-6 rounded-xl hover:bg-blue-600 transition text-center text-xs font-bold">DLL...</div>
+            <div class="bg-white p-8 card-shadow text-center">
+                <h3 class="text-4xl font-black text-pink-500">500+</h3>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">Jumlah Anggota</p>
+            </div>
+            <div class="bg-white p-8 card-shadow text-center">
+                <h3 class="text-4xl font-black text-orange-500">24K</h3>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">Warga Terbantu</p>
+            </div>
+            <div class="bg-white p-8 card-shadow text-center">
+                <h3 class="text-4xl font-black text-blue-500">1.3K</h3>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">Siswa Terdukasi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEKTOR UTAMA -->
+    <section id="sektor" class="py-20 px-6 bg-slate-50">
+        <div class="max-w-xl mx-auto">
+            <h2 class="text-3xl font-black text-center mb-12">4 Sektor Utama</h2>
+            
+            <div class="space-y-6">
+                <!-- Pendidikan -->
+                <div class="bg-white p-8 rounded-[40px] shadow-sm border-l-8 border-blue-500">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                        <i class="fas fa-graduation-cap text-blue-500"></i> Bidang Pendidikan
+                    </h3>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• Goes To School</li>
+                        <li>• Zillenial Beraksi (Pelosok)</li>
+                        <li>• Seminar Pendidikan</li>
+                    </ul>
+                </div>
+                <!-- Ekonomi -->
+                <div class="bg-white p-8 rounded-[40px] shadow-sm border-l-8 border-green-500">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                        <i class="fas fa-lightbulb text-green-500"></i> Ekonomi Kreatif
+                    </h3>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• Produk Pemuda (Support UMKM)</li>
+                        <li>• Riset Industri & Solusi Konkret</li>
+                        <li>• Seminar Ekonomi Kreatif</li>
+                    </ul>
+                </div>
+                <!-- Kemanusiaan -->
+                <div class="bg-white p-8 rounded-[40px] shadow-sm border-l-8 border-red-500">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                        <i class="fas fa-hand-holding-heart text-red-500"></i> Aksi Kemanusiaan
+                    </h3>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• Pengabdi Muda Nasional (Tahunan)</li>
+                        <li>• Peduli Lindungi (Panti & Lansia)</li>
+                        <li>• Zillenial Clean (Lingkungan)</li>
+                    </ul>
+                </div>
+                <!-- Teknologi -->
+                <div class="bg-white p-8 rounded-[40px] shadow-sm border-l-8 border-purple-500">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-3">
+                        <i class="fas fa-laptop-code text-purple-500"></i> Media & Teknologi
+                    </h3>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li>• Cyber Security & Anti-Hoaks</li>
+                        <li>• Workshop Konten Kreatif</li>
+                        <li>• Digitalisasi UMKM & E-Commerce</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-white py-16 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
-            <div>
-                <div class="flex items-center space-x-2 mb-8">
-                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs italic">MMI</div>
-                    <span class="font-extrabold text-xl tracking-tighter text-slate-800 uppercase italic">Muda Mendunia Indonesia</span>
-                </div>
-                <p class="text-slate-500 mb-8 max-w-sm text-sm">
-                    Bagian dari <strong>Yayasan Rumah Untuk Kita Semua</strong>. Memberdayakan pemuda untuk solusi nasional yang berkelanjutan.
-                </p>
-                <div class="flex space-x-6 text-slate-400">
-                    <a href="#" class="hover:text-blue-600"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="#" class="hover:text-blue-600"><i class="fab fa-linkedin text-xl"></i></a>
-                    <a href="#" class="hover:text-blue-600"><i class="fab fa-whatsapp text-xl"></i></a>
+    <footer class="bg-[#121421] text-white pt-20 pb-10 px-6">
+        <div class="max-w-xl mx-auto">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-14 h-14 bg-gradient-pink rounded-2xl flex items-center justify-center font-black">MMI</div>
+                <div>
+                    <h2 class="text-xl font-bold">Muda Mendunia</h2>
+                    <p class="text-xs opacity-50">KABUPATEN TASIKMALAYA</p>
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-8">
+            
+            <div class="grid grid-cols-1 gap-10">
                 <div>
-                    <h5 class="font-bold text-sm mb-6 uppercase tracking-widest text-slate-400">Navigasi</h5>
-                    <ul class="space-y-4 text-sm font-semibold text-slate-600">
-                        <li><a href="#about" class="hover:text-blue-600">Sejarah</a></li>
-                        <li><a href="#impact" class="hover:text-blue-600">Dampak</a></li>
-                        <li><a href="#cabang" class="hover:text-blue-600">Cabang</a></li>
-                    </ul>
+                    <h4 class="font-bold mb-4 opacity-50 uppercase text-xs tracking-widest">Hubungi Kami</h4>
+                    <a href="https://instagram.com/mudamendunia.idn" class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+                        <i class="fab fa-instagram text-pink-500 text-xl"></i>
+                        <span class="font-bold">@mudamendunia.idn</span>
+                    </a>
                 </div>
+
                 <div>
-                    <h5 class="font-bold text-sm mb-6 uppercase tracking-widest text-slate-400">Tentang</h5>
-                    <ul class="space-y-4 text-sm font-semibold text-slate-600">
-                        <li><a href="#" class="hover:text-blue-600">Struktur Pengurus</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Kolaborasi Pentahelix</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Laporan Tahunan</a></li>
-                    </ul>
+                    <h4 class="font-bold mb-4 opacity-50 uppercase text-xs tracking-widest">Lokasi Sekretariat</h4>
+                    <p class="text-sm leading-relaxed mb-6">Kabupaten Tasikmalaya, Jawa Barat, Indonesia.</p>
+                    <div class="h-48 bg-slate-800 rounded-[30px] flex items-center justify-center text-slate-500 overflow-hidden grayscale">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126694.0!2d108.0!3d-7.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6154697723957b%3A0x301e8f1fc2f1550!2sTasikmalaya%20Regency%2C%20West%20Java!5e0!3m2!1sen!2sid!4v123456789" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-50 text-center text-xs font-medium text-slate-400 uppercase tracking-[0.2em]">
-            &copy; 2026 MUDA MENDUNIA INDONESIA. Dirancang untuk masa depan Indonesia.
+
+            <p class="text-center mt-20 text-[10px] tracking-[4px] opacity-20 uppercase font-black">
+                &copy; 2026 MUDA MENDUNIA INDONESIA
+            </p>
         </div>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            const overlay = document.getElementById('overlay');
+            overlay.classList.toggle('hidden');
+            overlay.classList.toggle('flex');
+        }
+    </script>
 </body>
 </html>
